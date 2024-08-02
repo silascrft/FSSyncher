@@ -1,0 +1,8 @@
+﻿<UserControl x:Class="FSSyncher.SaveGamePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="600" Width="1000">
+    <Grid>
+        <Image Source="/Assets/SaveGamePageBG.png" Stretch="Fill"/>
+    </Grid>
+</UserControl>

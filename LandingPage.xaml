@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="FSSyncher.LandingPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="600" Width="1000">
+    <UserControl.Resources>
+        <!-- Define the custom font -->
+        <FontFamily x:Key="CustomFontFamily">pack://application:,,,/Assets/Exo2-VariableFont_wght.ttf#Exo 2</FontFamily>
+
+        <!-- Define Button Style -->
+        <Style x:Key="ImageButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="450"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <!-- Background Image -->
+                            <Image x:Name="ButtonImage" Source="pack://application:,,,/Assets/ButtonDefault.png" Stretch="Fill"/>
+                            <!-- Text Content -->
+                            <TextBlock Text="{TemplateBinding Content}"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Margin="100,0,0,0" 
+                                       Foreground="White"
+                                       FontSize="16"
+                                       FontWeight="Medium"
+                                       FontFamily="{StaticResource CustomFontFamily}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonImage" Property="Source" Value="/Assets/ButtonHover.png"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonImage" Property="Source" Value="/Assets/ButtonPress.png"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <!-- Add a Border with rounded corners -->
+    <Grid>
+        <!-- Background Image -->
+        <Image Source="/Assets/LandingPage.png" Stretch="Fill"/>
+
+        <!-- Grid Layout for Buttons -->
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,238,0,0" Width="444">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0"/>
+                <!-- Spacer row -->
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0"/>
+                <!-- Spacer row -->
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource ImageButtonStyle}" Content="Play" Grid.Row="0" FontSize="16"/>
+            <Button Style="{StaticResource ImageButtonStyle}" Content="Synchronize" Grid.Row="2" FontSize="16"/>
+            <Button Style="{StaticResource ImageButtonStyle}" Content="Savegames" Grid.Row="4" FontSize="16" Click="SavegamesButton_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>
